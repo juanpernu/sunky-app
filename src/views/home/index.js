@@ -1,4 +1,5 @@
 import React from "react";
+import { PopupButton } from "@typeform/embed-react";
 import {
   Desktop,
   Mobile,
@@ -55,8 +56,12 @@ const Home = () => {
           Empecemos a salvar la comida
         </p>
         <div className="md:grid md:grid-cols-2 sm:flex sm:flex-col sm:w-full md:gap-8 mt-4">
-          <Button className="sm:mt-4 md:mt-0">Para negocios</Button>
-          <Button>Para consumidores</Button>
+          <PopupButton id="kdU1E3B5">
+            <Button className="w-full">Para negocios</Button>
+          </PopupButton>
+          <PopupButton id="rxSrgVVL">
+            <Button className="w-full">Para consumidores</Button>
+          </PopupButton>
         </div>
       </Image>
       <Feature copy="Misión" title="¿Porqué estamos acá?">
@@ -87,9 +92,11 @@ const Home = () => {
           de Cajas Secretas de los mejores restaurantes y negocios a un precio
           increible.
         </Text>
-        <Button modifier="secondary" className="mt-8">
-          Descargar la App
-        </Button>
+        <PopupButton id="rxSrgVVL">
+          <Button modifier="secondary" className="mt-8">
+            Descargar la App
+          </Button>
+        </PopupButton>
       </ProductRight>
       <ProductLeft
         title="¿Tenés un negocio que tiene superávit de comida?"
@@ -101,9 +108,11 @@ const Home = () => {
           Sunky puede ayudarte a reducir el sobrante, todo mientras encontramos
           nuevos clientes para que recuperes costos hundidos.
         </Text>
-        <Button modifier="secondary" className="mt-8">
-          Registrar mi negocio
-        </Button>
+        <PopupButton id="kdU1E3B5">
+          <Button modifier="secondary" className="mt-8">
+            Registrar mi negocio
+          </Button>
+        </PopupButton>
       </ProductLeft>
     </div>
   );
