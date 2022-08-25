@@ -8,5 +8,3 @@ services:
       - "8080:80"
     environment:
       - NODE_ENV=prod
-    # env_file:
-    #   - ./.env

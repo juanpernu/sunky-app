@@ -1,8 +1,7 @@
 import React from "react";
 import { PopupButton } from "@typeform/embed-react";
 import {
-  Desktop,
-  Mobile,
+  Menu,
   Button,
   Feature,
   Image as ProductImage,
@@ -10,6 +9,7 @@ import {
   Right as ProductRight,
   Icon as ProductIcon,
   Text,
+  Footer,
 } from "../../components";
 import { Image } from "../../components/covers/Image";
 import {
@@ -19,13 +19,6 @@ import {
 } from "@heroicons/react/outline";
 
 const Home = () => {
-  const navigation = {
-    pages: [
-      { name: "Para negocios", href: "#" },
-      { name: "Para consumidores", href: "#" },
-    ],
-  };
-
   const productItems = [
     {
       icon: <HeartIcon className="text-purple-500 h-14 w-14" />,
@@ -46,18 +39,17 @@ const Home = () => {
 
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
-      <Desktop navigation={navigation} />
-      <Mobile navigation={navigation} />
+      <Menu />
       <Image
         title="Empecemos a salvar la comida"
         imageSrc="https://img.freepik.com/premium-photo/healthy-food-clean-eating-selection_79782-19.jpg?w=2000"
       >
-        <p className="text-white md:text-8xl font-extrabold text-center sm:text-6xl sm:max-w-xl md:max-w-4xl">
+        <p className="text-white text-4xl md:text-6xl lg:text-8xl font-extrabold text-center m-auto md:max-w-4xl">
           Empecemos a salvar la comida
         </p>
-        <div className="md:grid md:grid-cols-2 sm:flex sm:flex-col sm:w-full md:gap-8 mt-4">
+        <div className="md:grid md:grid-cols-2 flex flex-col sm:w-full md:gap-8 mt-4">
           <PopupButton id="kdU1E3B5">
-            <Button className="w-full">Para negocios</Button>
+            <Button className="w-full mb-4 md:mb-0">Para negocios</Button>
           </PopupButton>
           <PopupButton id="rxSrgVVL">
             <Button className="w-full">Para consumidores</Button>
@@ -81,10 +73,10 @@ const Home = () => {
         imgAlt="Sunky - Desperdicio torta"
       />
       <ProductIcon title="¿Cómo funciona?" items={productItems} />
-      <ProductRight
+      <ProductLeft
         title="Es un movimiento"
         copy="NUESTRO TRABAJO NO TERMINA CON NEGOCIOS Y RESTAURANTES"
-        imgSrc="https://toogoodtogo.com/v22/b2b.png"
+        imgSrc="https://img.freepik.com/free-photo/blank-map-south-america_53876-145017.jpg"
         imgAlt="Sunky - For customers"
       >
         <Text>
@@ -97,11 +89,11 @@ const Home = () => {
             Descargar la App
           </Button>
         </PopupButton>
-      </ProductRight>
-      <ProductLeft
+      </ProductLeft>
+      <ProductRight
         title="¿Tenés un negocio que tiene superávit de comida?"
         copy="SE PARTE DE LA SOLUCIÓN"
-        imgSrc="https://toogoodtogo.com/v22/b2b.png"
+        imgSrc="https://img.freepik.com/free-photo/hand-holding-chopsticks-food-concept_53876-129545.jpg"
         imgAlt="Sunky - For business"
       >
         <Text>
@@ -113,7 +105,8 @@ const Home = () => {
             Registrar mi negocio
           </Button>
         </PopupButton>
-      </ProductLeft>
+      </ProductRight>
+      <Footer />
     </div>
   );
 };
