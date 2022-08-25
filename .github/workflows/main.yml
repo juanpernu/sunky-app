@@ -18,7 +18,7 @@ jobs:
         id: current-time
 
       - name: Run string replace
-        uses: frabert/replace-string-action@main
+        uses: frabert/replace-string-action@v2.0
         id: format-time
         with:
           pattern: '[:\.]+'
