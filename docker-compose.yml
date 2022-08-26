@@ -3,12 +3,8 @@ services:
   sunky-app:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.prod
     ports:
-      - "3000:3000"
-    volumes:
-      - ./src:/app/src
+      - "8080:80"
     environment:
-      - NODE_ENV=develop
-    # env_file:
-    #   - ./.env
+      - NODE_ENV=prod
