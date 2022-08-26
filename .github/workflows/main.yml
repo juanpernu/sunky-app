@@ -23,27 +23,14 @@ jobs:
 
       - name: Upload package to S3 bucket
         run: aws s3 cp deploy_package.zip s3://sunky-app/
-      
-      - name: Get timestamp
-        uses: gerred/actions/current-time@master
-        id: current-time
-      
-      - name: Run string replace
-        uses: frabert/replace-string-action@v2.0
-        id: format-time
-        with:
-          pattern: '[:\.]+'
-          string: "${{ steps.current-time.outputs.time }}"
-          replace-with: '-'
-          flags: 'g'
 
       - name: Create new ElasticBeanstalk Application Version
         run: |
           aws elasticbeanstalk create-application-version \
           --application-name sunky-app \
           --source-bundle S3Bucket="sunky-app",S3Key="deploy_package.zip" \
-          --version-label "sunky-app-${{ steps.format-time.outputs.replaced }}" \
+          --version-label "sunky-app-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
 
       - name: Deploy new ElasticBeanstalk Application Version
-        run: aws elasticbeanstalk update-environment --environment-name Sunkyapp-env-1 --version-label "sunky-app-${{ steps.format-time.outputs.replaced }}"
+        run: aws elasticbeanstalk update-environment --environment-name Sunkyapp-env-1 --version-label "sunky-app-${{ github.sha }}"
