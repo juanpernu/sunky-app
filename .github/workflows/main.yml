@@ -1,4 +1,4 @@
-name: Deploy Sunky App
+name: Deploy Sunky App on EB
 on:
   push:
     branches:
