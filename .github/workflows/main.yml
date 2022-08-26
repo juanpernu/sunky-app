@@ -1,38 +1,36 @@
-name: Deploy Sunky App on EB
+name: Deploy to EB
+
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout Latest Repo
-        uses: actions/checkout@main
-        
-      - name: Generate Deployment Package
-        run: zip -r deploy.zip * -x "**node_modules**"
+      - uses: actions/checkout@v3
 
-      - name: Get timestamp
-        uses: gerred/actions/current-time@master
-        id: current-time
+      - name: Create ZIP deployment package
+        run: zip -r deploy_package.zip ./
 
-      - name: Run string replace
-        uses: frabert/replace-string-action@v2.0
-        id: format-time
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          pattern: '[:\.]+'
-          string: "${{ steps.current-time.outputs.time }}"
-          replace-with: '-'
-          flags: 'g'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: "sa-east-1"
 
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: sunky-app
-          environment_name: Sunkyapp-env
-          version_label: "sunky-app-${{ steps.format-time.outputs.replaced }}"
-          region: sa-east-1
-          deployment_package: deploy.zip
+      - name: Upload package to S3 bucket
+        run: aws s3 cp deploy_package.zip s3://sunky-app/
+
+      - name: Create new ElasticBeanstalk Application Version
+        run: |
+          aws elasticbeanstalk create-application-version \
+          --application-name sunky-app \
+          --source-bundle S3Bucket="sunky-app",S3Key="deploy_package.zip" \
+          --version-label "ver-${{ github.sha }}" \
+          --description "commit-sha-${{ github.sha }}"
+
+      - name: Deploy new ElasticBeanstalk Application Version
+        run: aws elasticbeanstalk update-environment --environment-name Sunkyapp-env --version-label "ver-${{ github.sha }}"
