@@ -1,8 +1,8 @@
-name: Deploy to EB
+name: deploy-to-eb
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
@@ -22,15 +22,15 @@ jobs:
           aws-region: "sa-east-1"
 
       - name: Upload package to S3 bucket
-        run: aws s3 cp deploy_package.zip s3://sunky-app/
+        run: aws s3 cp deploy_package.zip s3://my-awesome-app-deploy-andrey/
 
       - name: Create new ElasticBeanstalk Application Version
         run: |
           aws elasticbeanstalk create-application-version \
           --application-name sunky-app \
           --source-bundle S3Bucket="sunky-app",S3Key="deploy_package.zip" \
-          --version-label "sunky-app-${{ github.sha }}" \
+          --version-label "ver-${{ github.sha }}" \
           --description "commit-sha-${{ github.sha }}"
 
       - name: Deploy new ElasticBeanstalk Application Version
-        run: aws elasticbeanstalk update-environment --environment-name Sunkyapp-env --version-label "sunky-app-${{ github.sha }}"
+        run: aws elasticbeanstalk update-environment --environment-name Sunkyapp-env --version-label "ver-${{ github.sha }}"
