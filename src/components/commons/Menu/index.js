@@ -10,9 +10,7 @@ export const Menu = () => {
           <Logo className="w-20" />
           <div className="h-full flex space-x-8">
             <PopupButton id="kdU1E3B5">
-              <p className="w-full mb-4 md:mb-0 hover:text-yellow-600">
-                Para negocios
-              </p>
+              <p className="w-full mb-0 hover:text-yellow-600">Para negocios</p>
             </PopupButton>
             <PopupButton id="rxSrgVVL">
               <p className="w-full hover:text-yellow-600">Para consumidores</p>
