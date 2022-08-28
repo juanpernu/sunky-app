@@ -10,5 +10,3 @@ services:
       - ./src:/app/src
     environment:
       - NODE_ENV=develop
-    # env_file:
-    #   - ./.env
