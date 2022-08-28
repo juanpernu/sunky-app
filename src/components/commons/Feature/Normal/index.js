@@ -1,3 +1,4 @@
+import React from "react";
 import { Title } from "../../../index";
 
 export const Normal = ({ copy, title, children }) => {

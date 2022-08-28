@@ -1,3 +1,5 @@
+import React from "react";
+
 export const Image = ({ title, copy, imgSrc, imgAlt }) => {
   return (
     <div className="flex md:flex-row flex-col text-left items-center max-w-4xl mx-auto py-20">

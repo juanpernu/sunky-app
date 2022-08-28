@@ -44,7 +44,7 @@ const Home = () => {
         title="Empecemos a salvar la comida"
         imageSrc="https://img.freepik.com/premium-photo/healthy-food-clean-eating-selection_79782-19.jpg?w=2000"
       >
-        <p className="text-white text-4xl md:text-6xl lg:text-8xl font-extrabold text-center m-auto md:max-w-4xl">
+        <p className="text-white text-4xl md:text-6xl lg:text-8xl font-extrabold text-center m-auto">
           Empecemos a salvar la comida
         </p>
         <div className="md:grid md:grid-cols-2 flex flex-col sm:w-full md:gap-8 mt-4">

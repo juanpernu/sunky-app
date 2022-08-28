@@ -1,7 +1,8 @@
-import { Formik } from 'formik';
-import { useForm } from './useForm';
-import { useSubmit } from './useSubmit';
-import { Input, Button, Form, SquareCheckbox } from '../../index';
+import React from "react";
+import { Formik } from "formik";
+import { useForm } from "./useForm";
+import { useSubmit } from "./useSubmit";
+import { Input, Button, Form, SquareCheckbox } from "../../index";
 
 export const SingupForm = ({ onChange }) => {
   const { initialValues } = useForm();
