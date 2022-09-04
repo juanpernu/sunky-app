@@ -59,7 +59,7 @@ const Home = () => {
       <Feature copy="Misión" title="¿Porqué estamos acá?">
         <Text className="mt-8">
           ¿Nuestra misión? Asegurarnos que la comida rica se come, no se tira.
-          Todos los días comida deliciosa y fresca se desperdician en café,
+          Todos los días comida deliciosa y fresca se desperdician en cafés,
           restaurantes, hoteles, comercios y fabricas solamente porque no se
           vendió a tiempo. Sunky app permite a sus consumidores comprar y
           retirar Cajas Sorpresas de comida a un increīble precio directamente
