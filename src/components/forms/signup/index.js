@@ -1,4 +1,5 @@
 import React from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Formik } from "formik";
 import { useForm } from "./useForm";
 import { useSubmit } from "./useSubmit";
@@ -13,33 +14,37 @@ export const SingupForm = ({ onChange }) => {
       onSubmit={useSubmit(onChange)}
       enableReinitialize
     >
-      {({ submitForm, isSubmitting, isValid }) => (
+      {({ submitForm, isSubmitting }) => (
         <Form showActions={false}>
-          <>
-            <p className="mt-4 mb-8 text-center text-2xl text-neutral-600">
-              <span className="font-bold">Regístrate. </span>
-              <span className="font-regular">Es rápido y fácil.</span>
-            </p>
-            <div className="grid grid-cols-2 gap-6">
-              <Input name="user" label="Nombres" type="text" />
-              <Input name="password" label="Apellido" type="text" />
-            </div>
-            <Input name="user" label="Email" type="text" />
-            <Input name="user" label="Contraseña" type="password" />
-            <SquareCheckbox
-              name="terms"
-              label="Aceptar términos y condiciones"
-              description="Al registrarte aceptas todos los términos y condiciones."
+          <p className="mb-8 text-center text-lg text-neutral-600 md:text-2xl">
+            <span className="font-bold">Regístrate. </span>
+            <span className="font-regular">Es rápido y fácil.</span>
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
+            <Input name="name" label="Nombres *" type="text" />
+            <Input name="lastname" label="Apellido *" type="text" />
+          </div>
+          <Input name="email" label="Email *" type="text" />
+          <Input name="password" label="Contraseña *" type="password" />
+          <Input name="phone" label="Teléfono" type="text" />
+          <SquareCheckbox
+            name="terms"
+            label="Aceptar términos y condiciones"
+            description="Al registrarte aceptas todos los términos y condiciones."
+          />
+          <div className="mt-4 flex justify-center">
+            <ReCAPTCHA
+              sitekey="6LeOIdIhAAAAADN2HKs394907QBUlLL03GgF7UxF"
+              onChange={onChange}
             />
-            <Button
-              className="group relative items-center"
-              disabled={isSubmitting || !isValid}
-              loading={isSubmitting}
-              onClick={submitForm}
-            >
-              <p>Crear cuenta</p>
-            </Button>
-          </>
+          </div>
+          <Button
+            className="mt-8 flex items-center justify-center text-base w-full h-10"
+            loading={isSubmitting}
+            onClick={submitForm}
+          >
+            <p>Crear cuenta</p>
+          </Button>
         </Form>
       )}
     </Formik>

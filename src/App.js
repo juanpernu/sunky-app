@@ -9,7 +9,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<HomeView />} />
-        <Route exact path="/register" element={<RegisterView />} />
+        <Route exact path="/providers/register" element={<RegisterView />} />
       </Routes>
     </BrowserRouter>
   );
