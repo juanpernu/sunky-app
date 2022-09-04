@@ -5,7 +5,7 @@ export function useFocused() {
   const focus = () => setIsFocused(!isFocused);
   const focusedClass =
     isFocused &&
-    "focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-1 focus:ring-offset-gray-100";
+    "focus:outline-none focus:ring-2 focus:ring-yellow-600 focus:ring-offset-1 focus:ring-offset-gray-100";
 
   return { isFocused, focus, focusedClass };
 }
