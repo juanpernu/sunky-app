@@ -23,9 +23,7 @@ export const Footer = () => {
               </a>
             </div>
             <div className="grid">
-              <p className="text-sm text-gray-500">
-                Copyright © Too Good To Go International.
-              </p>
+              <p className="text-sm text-gray-500">Copyright © Sunky.</p>
               <p className="text-sm text-gray-500">All Rights Reserved.</p>
             </div>
           </div>
