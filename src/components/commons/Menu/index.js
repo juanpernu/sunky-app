@@ -13,10 +13,12 @@ export const Menu = () => {
           <div className="h-full flex space-x-8">
             <Logo className="w-20" />
             <PopupButton id="kdU1E3B5">
-              <p className="w-full mb-0 hover:text-yellow-600">Soy negocio</p>
+              <p className="w-full mb-0 hover:text-yellow-600">
+                Tengo un negocio
+              </p>
             </PopupButton>
             <PopupButton id="rxSrgVVL">
-              <p className="w-full hover:text-yellow-600">Soy consumidor</p>
+              <p className="w-full hover:text-yellow-600">Quiero probar</p>
             </PopupButton>
           </div>
           <div>
@@ -39,12 +41,12 @@ export const Menu = () => {
             <ul className="flex flex-col">
               <PopupButton id="kdU1E3B5">
                 <li className="text-left mb-6 hover:cursor-pointer hover:text-yellow-600">
-                  Soy negocio
+                  Tengo un negocio
                 </li>
               </PopupButton>
               <PopupButton id="rxSrgVVL">
                 <li className="text-left hover:cursor-pointer hover:text-yellow-600">
-                  Soy consumidor
+                  Quiero probar
                 </li>
               </PopupButton>
             </ul>

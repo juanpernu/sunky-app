@@ -23,7 +23,7 @@ const Home = () => {
     {
       icon: <HeartIcon className="text-purple-500 h-14 w-14" />,
       name: "Descubrí",
-      description: "Deliciosa cantidad de comída a tu alrededor",
+      description: "Deliciosa cantidad de comida a tu alrededor",
     },
     {
       icon: <LocationMarkerIcon className="text-purple-500 h-14 w-14" />,
@@ -48,30 +48,31 @@ const Home = () => {
           Empecemos a salvar la comida
         </p>
         <div className="md:grid md:grid-cols-2 flex flex-col sm:w-full md:gap-8 mt-4">
-          <PopupButton id="kdU1E3B5">
-            <Button className="w-full mb-4 md:mb-0">Para negocios</Button>
-          </PopupButton>
           <PopupButton id="rxSrgVVL">
-            <Button className="w-full">Para consumidores</Button>
+            <Button className="w-full mb-4 md:mb-0">Quiero probar</Button>
+          </PopupButton>
+          <PopupButton id="kdU1E3B5">
+            <Button modifier="terciary" className="w-full">
+              Tengo un negocio
+            </Button>
           </PopupButton>
         </div>
       </Image>
-      <Feature copy="Misión" title="¿Porqué estamos acá?">
-        <Text className="mt-8">
-          ¿Nuestra misión? Asegurarnos que la comida rica se come, no se tira.
-          Todos los días comida deliciosa y fresca se desperdician en cafés,
-          restaurantes, hoteles, comercios y fabricas solamente porque no se
-          vendió a tiempo. Sunky app permite a sus consumidores comprar y
-          retirar Cajas Sorpresas de comida a un increīble precio directamente
-          en los comercios.
-        </Text>
-      </Feature>
       <ProductImage
         title="Más del 1/3 de comida es desperdiciada"
         copy="Y QUEREMOS CAMBIAR ESO"
         imgSrc="https://toogoodtogo.com/v2020/front-page/2-5-pie.png"
         imgAlt="Sunky - Desperdicio torta"
       />
+      <Feature copy="Misión" title="¿Por qué estamos acá?">
+        <Text className="mt-8">
+          Queremos asegurarnos que la comida rica se come, no se tira. Todos los
+          días comida deliciosa y fresca se desperdician en cafés, restaurantes,
+          hoteles, comercios y fábricas solamente porque no se vendió a tiempo.
+          Sunky app permite a sus consumidores comprar y retirar Cajas Sorpresas
+          de comida a un increíble precio directamente en los comercios.
+        </Text>
+      </Feature>
       <ProductIcon title="¿Cómo funciona?" items={productItems} />
       <ProductLeft
         title="Es un movimiento"
@@ -82,7 +83,7 @@ const Home = () => {
         <Text>
           En Sunky aparte de ayudar a combatir el desperdicio, vas a disfrutar
           de Cajas Secretas de los mejores restaurantes y negocios a un precio
-          increible.
+          increíble.
         </Text>
         <PopupButton id="rxSrgVVL">
           <Button modifier="secondary" className="mt-8">
