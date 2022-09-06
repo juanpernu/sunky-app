@@ -1,20 +1,29 @@
 import { useContext } from "react";
-import { FormContext } from "../../../context";
+import { FormContext, LoadingContext, SnackbarContext } from "../../../context";
 import { bussinesSignup } from "../../../services";
 
 export function useSubmit(onChange) {
   const { closeForm } = useContext(FormContext);
+  const { startLoading, stopLoading } = useContext(LoadingContext);
+  const { showErrorSnackbar } = useContext(SnackbarContext);
 
   return async (spec, formikActions) => {
     try {
-      await axiosPromise(spec);
+      if (!spec.terms_conditions) {
+        throw new Error("Por favor, acepta los términos y condiciones");
+      }
+      startLoading();
+      const {
+        data: { data },
+      } = await axiosPromise(spec);
       closeForm();
-      onChange();
+      onChange(data._id.toString());
     } catch (err) {
-      console.error(err.message);
+      showErrorSnackbar(err.message);
     } finally {
       formikActions.resetForm();
       formikActions.setSubmitting(false);
+      stopLoading();
     }
   };
 }

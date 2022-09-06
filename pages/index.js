@@ -6,7 +6,7 @@ import {
   SparklesIcon,
 } from "@heroicons/react/outline";
 import {
-  Menu,
+  MenuLanding,
   Button,
   Feature,
   Image as ProductImage,
@@ -39,7 +39,7 @@ const Home = () => {
 
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
-      <Menu />
+      <MenuLanding />
       <Image
         title="Empecemos a salvar la comida"
         imageSrc="https://img.freepik.com/premium-photo/healthy-food-clean-eating-selection_79782-19.jpg?w=2000"

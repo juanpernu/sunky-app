@@ -6,12 +6,13 @@ import { useSubmit } from "./useSubmit";
 import { Input, Button, Form, SquareCheckbox } from "../../index";
 
 export const SingupForm = ({ onChange }) => {
-  const { initialValues } = useForm();
+  const { initialValues, validate } = useForm();
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={useSubmit(onChange)}
+      validate={validate}
       enableReinitialize
     >
       {({ submitForm, isSubmitting }) => (

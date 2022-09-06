@@ -1,17 +1,25 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Card, Logo } from "../../components";
 import { SingupForm } from "../../components/forms";
 
 const Register = () => {
+  const router = useRouter();
+
+  const onChangeHandler = (id) => {
+    router.push({
+      pathname: `/business/${id}`,
+    });
+  };
+
   return (
-    <section className="flex min-h-screen flex-col items-center justify-center">
-      <canvas className="h-54 w-full absolute -z-50" />
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
+    <section className="flex min-h-screen py-10 flex-col items-center justify-center">
+      <main className="mt-8 flex w-full flex-1 flex-col items-center justify-center px-8 text-center md:mt-0 md:px-20">
         <div className="mb-4">
           <Logo className="w-36" />
         </div>
-        <Card className="w-[450px] bg-white p-12">
-          <SingupForm onChange={() => console.log("hola")} />
+        <Card className="w-full md:w-[450px] bg-white p-12">
+          <SingupForm onChange={onChangeHandler} />
         </Card>
         <div className="mt-4 flex flex-row text-neutral-600">
           <p className="mr-2 text-sm">¿Ya tienes una cuenta?</p>
