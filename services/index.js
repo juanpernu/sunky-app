@@ -1,0 +1,1 @@
+export { bussinesSignup } from "./register";
