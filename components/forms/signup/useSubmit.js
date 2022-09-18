@@ -16,8 +16,8 @@ export function useSubmit(onChange) {
       const {
         data: { data },
       } = await axiosPromise(spec);
+      if (data) onChange(data._id.toString());
       closeForm();
-      onChange(data._id.toString());
     } catch (err) {
       showErrorSnackbar(err.message);
     } finally {
