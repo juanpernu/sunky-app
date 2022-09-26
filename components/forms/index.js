@@ -1,1 +1,1 @@
-export { SingupForm } from "./signup";
+export { RegisterBusinessForm, RegisterCustomerForm } from "./signup";

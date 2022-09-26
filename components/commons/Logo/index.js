@@ -1,9 +1,22 @@
 import React from "react";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 
 export const Logo = ({ className }) => {
-  const classes = classNames(className);
+  const router = useRouter();
+  const classes = classNames("hover:cursor-pointer", className);
+
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    router.push("/");
+  };
+
   return (
-    <img className={classes} src="/static/sunky-logo.svg" alt="Logo Sunky" />
+    <img
+      onClick={onClickHandler}
+      className={classes}
+      src="/static/sunky-logo.svg"
+      alt="Logo Sunky"
+    />
   );
 };

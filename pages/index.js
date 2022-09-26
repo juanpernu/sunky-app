@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { PopupButton } from "@typeform/embed-react";
 import {
   HeartIcon,
@@ -15,10 +16,11 @@ import {
   Icon as ProductIcon,
   Text,
   Footer,
+  CoverImage,
 } from "../components";
-import { Image } from "../components/covers/Image";
 
 const Home = () => {
+  const router = useRouter();
   const productItems = [
     {
       icon: <HeartIcon className="text-purple-500 h-14 w-14" />,
@@ -37,10 +39,15 @@ const Home = () => {
     },
   ];
 
+  const onClickHandler = (e, href) => {
+    e.preventDefault();
+    router.push(href);
+  };
+
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
-      <MenuLanding />
-      <Image
+      <MenuLanding onClick={onClickHandler} />
+      <CoverImage
         title="Empecemos a salvar la comida"
         imageSrc="https://img.freepik.com/premium-photo/healthy-food-clean-eating-selection_79782-19.jpg?w=2000"
       >
@@ -48,16 +55,19 @@ const Home = () => {
           Empecemos a salvar la comida
         </p>
         <div className="md:grid md:grid-cols-2 flex flex-col sm:w-full md:gap-8 mt-4">
-          <PopupButton id="rxSrgVVL">
-            <Button className="w-full mb-4 md:mb-0">Quiero probar</Button>
-          </PopupButton>
+          <Button
+            onClick={(e) => onClickHandler(e, "/customer")}
+            className="w-full mb-4 md:mb-0"
+          >
+            Quiero probar
+          </Button>
           <PopupButton id="kdU1E3B5">
             <Button modifier="terciary" className="w-full">
               Tengo un negocio
             </Button>
           </PopupButton>
         </div>
-      </Image>
+      </CoverImage>
       <ProductImage
         title="Más del 1/3 de comida es desperdiciada"
         copy="Y QUEREMOS CAMBIAR ESO"

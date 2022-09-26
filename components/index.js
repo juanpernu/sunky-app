@@ -14,4 +14,5 @@ export { Text } from "./commons/Text";
 export { Title } from "./commons/Title";
 export { Subtitle } from "./commons/Subtitle";
 export { Snackbar } from "./commons/Snackbar";
-export { SingupForm } from "./forms";
+export { Image as CoverImage, Side as CoverSide } from "./covers";
+export { RegisterBusinessForm, RegisterCustomerForm } from "./forms";

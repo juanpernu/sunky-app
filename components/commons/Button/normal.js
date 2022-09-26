@@ -16,7 +16,7 @@ export const Normal = ({
     modifier === "primary" &&
       "bg-yellow-500 hover:bg-white hover:text-yellow-500 border-yellow-500",
     modifier === "secondary" &&
-      "bg-purple-500 hover:text-purple-500 border-purple-500",
+      "bg-purple-500 hover:text-purple-500 hover:bg-white border-purple-500",
     modifier === "terciary" &&
       "text-yellow-500 border-yellow-500 bg-yellow-50 hover:bg-white",
     className
