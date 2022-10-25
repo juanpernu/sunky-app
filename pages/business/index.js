@@ -1,39 +1,50 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { PopupButton } from "@typeform/embed-react";
 import {
-  HeartIcon,
-  LocationMarkerIcon,
-  SparklesIcon,
+  ArchiveIcon,
+  InboxInIcon,
+  GiftIcon,
+  GlobeIcon,
+  CurrencyDollarIcon,
 } from "@heroicons/react/outline";
 import {
   MenuLanding,
   Button,
-  Feature,
+  Title,
   Left as ProductLeft,
-  CoverSide,
   Icon as ProductIcon,
   Text,
   Footer,
+  Subtitle,
 } from "../../components";
+import { RegisterBusinessForm } from "../../components/forms";
 
 const Business = () => {
   const router = useRouter();
   const productItems = [
     {
-      icon: <HeartIcon className="text-purple-500 h-14 w-14" />,
-      name: "Descubrí",
-      description: "Deliciosa cantidad de comida a tu alrededor",
+      icon: <ArchiveIcon className="text-purple-500 h-14 w-14" />,
+      name: "Armá tu pack",
+      description:
+        "Incluí tu excedente en la aplicación como un pack sorpresa.",
     },
     {
-      icon: <LocationMarkerIcon className="text-purple-500 h-14 w-14" />,
-      name: "Retirá",
-      description: "Comida deliciosa de negocios cerca tuyo",
+      icon: <InboxInIcon className="text-purple-500 h-14 w-14" />,
+      name: "Recibí la orden",
+      description:
+        "Las personas con la app van a ver tu negocio y comprarán el pack a través de ella.",
     },
     {
-      icon: <SparklesIcon className="text-purple-500 h-14 w-14" />,
-      name: "Disfrutá",
-      description: "Una rica comida que ayuda al planeta",
+      icon: <GiftIcon className="text-purple-500 h-14 w-14" />,
+      name: "Entregá el pack",
+      description:
+        "A la hora establecida, la persona irá a recoger el pack a tu negocio.",
+    },
+    {
+      icon: <CurrencyDollarIcon className="text-purple-500 h-14 w-14" />,
+      name: "Recuperá costos",
+      description:
+        "Recuperarás costos, ayudarás al planeta y darás visibilidad a tu negocio.",
     },
   ];
 
@@ -45,40 +56,27 @@ const Business = () => {
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
       <MenuLanding onClick={onClickHandler} />
-      <CoverSide
-        imgSrc="/static/customers-bag.png"
-        imgAlt="Sunky - For business"
-      >
-        <h2 className="text-8xl text-purple-600 font-bold">
-          VENDER TU EXCEDENTE NUNCA HABÍA SIDO TAN FÁCIL
-        </h2>
-        <Text>Un pack sorpresa con tu nombre te espera</Text>
-        <Button
-          onClick={(e) => onClickHandler(e, "/customers/register")}
-          modifier="primary"
-          className="mt-8"
-        >
-          Quiero registrarme
-        </Button>
-      </CoverSide>
+      <div className="overflow-hidden max-w-7xl mx-auto w-full sm:h-full h-full grid py-10 grid-cols-12 gap-10 items-center">
+        <div className="col-span-6">
+          <h2 className="text-8xl text-purple-600 font-bold">
+            VENDER TU EXCEDENTE NUNCA HABÍA SIDO TAN FÁCIL
+          </h2>
+          <Subtitle className="mt-10-*">Unite al movimiento Sunky.</Subtitle>
+          <Text className="text-amber-500 flex flex-row items-center">
+            <GlobeIcon className="h-10 w-10 mr-4" />
+            Ayuda al planeta, transforma pérdidas en igresos y da a conocer tu
+            comida.
+          </Text>
+        </div>
+        <div className="col-span-4 col-start-9">
+          <RegisterBusinessForm />
+        </div>
+      </div>
       <ProductIcon title="¿Cómo funciona?" items={productItems} />
-      <Feature copy="El planeta importa" title="¿Por qué es importante?">
-        <Text className="mt-8">
-          Más de 1/3 de toda la comida en el mundo acaba desperdiciada, una mala
-          noticia para el planeta. El desperdicio de alimentos es responsable
-          del 10% de todos los gases de efecto invernadero y supone una
-          extensión de terreno cultivado equivalente a China, que al final se
-          desperdicia.
-        </Text>
-        <Text className="mt-8">
-          Estamos decididos a solucionar el problema. Nuestra app te permite
-          salvar comida deliciosa que todavía no se ha vendido en miles de
-          establecimientos y evitar que se desperdicie.
-        </Text>
-        <Button modifier="secondary" className="mt-8">
-          Quiero registrarme
-        </Button>
-      </Feature>
+      <div className="mx-auto text-center lg:max-w-4xl py-20">
+        <Title>Preguntas frecuentes</Title>
+        <div></div>
+      </div>
       <ProductLeft
         title="Es un movimiento"
         copy="NUESTRO TRABAJO NO TERMINA CON NEGOCIOS Y RESTAURANTES"
