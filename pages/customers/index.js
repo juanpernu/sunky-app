@@ -48,14 +48,14 @@ const Customers = () => {
         imgSrc="/static/customers-bag.png"
         imgAlt="Sunky - For business"
       >
-        <h2 className="text-8xl text-purple-600 font-bold">
+        <h2 className="lg:text-8xl md:text-6xl text-4xl text-purple-600 font-bold">
           ¿QUIERES EMPEZAR A SALVAR COMIDA?
         </h2>
         <Text>Un pack sorpresa con tu nombre te espera</Text>
         <Button
           onClick={(e) => onClickHandler(e, "/customers/register")}
           modifier="primary"
-          className="mt-8"
+          className="mt-8 w-full md:w-52"
         >
           Quiero registrarme
         </Button>

@@ -1,7 +1,9 @@
 import React from "react";
 
-export const Card = ({ children, className = "" }) => {
+export const Card = ({ children, onClick, className = "" }) => {
   return (
-    <div className={`rounded-md p-8 shadow-xl ${className}`}>{children}</div>
+    <div onClick={onClick} className={`rounded-md p-8 shadow-xl ${className}`}>
+      {children}
+    </div>
   );
 };

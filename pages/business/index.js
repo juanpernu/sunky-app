@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 import {
   ArchiveIcon,
@@ -6,20 +6,44 @@ import {
   GiftIcon,
   GlobeIcon,
   CurrencyDollarIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/outline";
 import {
   MenuLanding,
-  Button,
   Title,
-  Left as ProductLeft,
   Icon as ProductIcon,
   Text,
+  Card,
   Footer,
   Subtitle,
 } from "../../components";
 import { RegisterBusinessForm } from "../../components/forms";
 
+const faqs = [
+  {
+    title: "¿Cómo beneficia esto a mi establecimiento?",
+    text: "Sunky te permite reducir el desperdicio de alimentos y recuperar dinero con el excedente que de otro modo se habría tirado a la basura. Estar en la aplicación ayuda a los nuevos clientes a descubrir tu negocio. Además, el 76% de los clientes que descubren una tienda a través de Sunky vuelven como clientes habituales.",
+  },
+  {
+    title: "¿Cuánto tiempo se necesita para dar de alta mi negocio?",
+    text: "¡Casi no más del tiempo necesario que que usas para tirar la comida! Solo tenés que registrar tu excedente para que lo recoja un cliente. En el momento de la recogida, el cliente te mostrará su ticket digital y entonces podrás entregarle su pack de comida.",
+  },
+  {
+    title: "¿Cuánto cuesta unirse?",
+    text: "Registrarse en Sunky es gratis, y no pagarás nada a menos que vendas comida a través de la aplicación. Una vez que comiences a vender alimentos, deduciremos una tarifa anual y una pequeña comisión por cada pack sorpresa vendido. Esta tarifa de comisión varía según lo que cobres por tus packs sorpresa. Ponte en contacto con nosotros y te ofreceremos más información al respecto.",
+  },
+  {
+    title: "¿Cuándo me pagarán el dinero correspondiente?",
+    text: "Te enviaremos el dinero que has ganado con Sunky trimestralmente. Lo único que tienes que hacer es proporcionarnos los datos de tu cuenta bancaria.",
+  },
+  {
+    title: "¿Tengo que ofrecer mis propias bolsas o envases?",
+    text: "Siempre animamos a los clientes a que traigan sus propios recipientes o bolsas, sin embargo, en algún momento pueden requerir de tus envases o bolsas. Si ya tienes elementos que sirven para ello, puedes usarlos. También podés adquirir bolsas de la marca Sunky. Tu responsable de cuenta puede ofrecerte más información al respecto.",
+  },
+];
+
 const Business = () => {
+  const [selected, setSelected] = useState(null);
   const router = useRouter();
   const productItems = [
     {
@@ -53,45 +77,58 @@ const Business = () => {
     router.push(href);
   };
 
+  const onChangeHandler = () => router.push("/success");
+
   return (
     <div className="bg-white px-4 sm:px-6 lg:px-8">
       <MenuLanding onClick={onClickHandler} />
-      <div className="overflow-hidden max-w-7xl mx-auto w-full sm:h-full h-full grid py-10 grid-cols-12 gap-10 items-center">
+      <div className="overflow-hidden max-w-7xl mx-auto w-full sm:h-full md:flex md:flex-col h-full lg:grid py-10 lg:grid-cols-12 lg:gap-10 items-center">
         <div className="col-span-6">
-          <h2 className="text-8xl text-purple-600 font-bold">
+          <h2 className="lg:text-8xl text-purple-600 font-bold md:text-7xl text-2xl">
             VENDER TU EXCEDENTE NUNCA HABÍA SIDO TAN FÁCIL
           </h2>
-          <Subtitle className="mt-10-*">Unite al movimiento Sunky.</Subtitle>
-          <Text className="text-amber-500 flex flex-row items-center">
-            <GlobeIcon className="h-10 w-10 mr-4" />
+          <Subtitle className="md:mt-10 mt-2">
+            Unite al movimiento Sunky.
+          </Subtitle>
+          <Text className="text-amber-500 flex flex-col md:flex-row md:items-center items-left mb-10 md:mb-0">
+            <GlobeIcon className="md:h-10 md:w-10 h-8 w-8 md:mr-4" />
             Ayuda al planeta, transforma pérdidas en igresos y da a conocer tu
             comida.
           </Text>
         </div>
-        <div className="col-span-4 col-start-9">
-          <RegisterBusinessForm />
+        <div className="lg:col-span-4 lg:col-start-9 md:w-full md:mt-10">
+          <RegisterBusinessForm onChange={onChangeHandler} />
         </div>
       </div>
       <ProductIcon title="¿Cómo funciona?" items={productItems} />
       <div className="mx-auto text-center lg:max-w-4xl py-20">
         <Title>Preguntas frecuentes</Title>
-        <div></div>
+        <div className="mt-10">
+          {faqs.map((faq, i) => (
+            <Card
+              className="mt-5 text-left hover:cursor-pointer"
+              key={i}
+              onClick={() => setSelected(i)}
+            >
+              <div className="flex justify-between items-center">
+                <h3 className="text-xl font-semibold">{faq.title}</h3>
+                <ChevronDownIcon
+                  className="h-5 w-5 text-gray-600 transition ease-in-out duration-300"
+                  style={{
+                    transform: selected === i ? "rotate(180deg)" : "rotate(0)",
+                  }}
+                />
+              </div>
+              <p
+                className="text-base font-regular mt-2 text-gray-600"
+                style={{ display: selected === i ? "block" : "none" }}
+              >
+                {faq.text}
+              </p>
+            </Card>
+          ))}
+        </div>
       </div>
-      <ProductLeft
-        title="Es un movimiento"
-        copy="NUESTRO TRABAJO NO TERMINA CON NEGOCIOS Y RESTAURANTES"
-        imgSrc="https://img.freepik.com/free-photo/blank-map-south-america_53876-145017.jpg"
-        imgAlt="Sunky - For customers"
-      >
-        <Text>
-          En Sunky aparte de ayudar a combatir el desperdicio, vas a disfrutar
-          de Cajas Secretas de los mejores restaurantes y negocios a un precio
-          increíble.
-        </Text>
-        <Button modifier="secondary" className="mt-8">
-          Quiero registrarme
-        </Button>
-      </ProductLeft>
       <Footer />
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { PopupButton } from "@typeform/embed-react";
 import {
   HeartIcon,
   LocationMarkerIcon,
@@ -56,16 +55,18 @@ const Home = () => {
         </p>
         <div className="md:grid md:grid-cols-2 flex flex-col sm:w-full md:gap-8 mt-4">
           <Button
-            onClick={(e) => onClickHandler(e, "/customer")}
+            onClick={(e) => onClickHandler(e, "/customers")}
             className="w-full mb-4 md:mb-0"
           >
             Quiero probar
           </Button>
-          <PopupButton id="kdU1E3B5">
-            <Button modifier="terciary" className="w-full">
-              Tengo un negocio
-            </Button>
-          </PopupButton>
+          <Button
+            onClick={(e) => onClickHandler(e, "/business")}
+            modifier="terciary"
+            className="w-full"
+          >
+            Tengo un negocio
+          </Button>
         </div>
       </CoverImage>
       <ProductImage
@@ -95,11 +96,13 @@ const Home = () => {
           de Cajas Secretas de los mejores restaurantes y negocios a un precio
           increíble.
         </Text>
-        <PopupButton id="rxSrgVVL">
-          <Button modifier="secondary" className="mt-8">
-            Descargar la App
-          </Button>
-        </PopupButton>
+        <Button
+          modifier="secondary"
+          onClick={(e) => onClickHandler(e, "/customers")}
+          className="mt-8"
+        >
+          Regístrate ahora
+        </Button>
       </ProductLeft>
       <ProductRight
         title="¿Tenés un negocio que tiene superávit de comida?"
@@ -111,11 +114,13 @@ const Home = () => {
           Sunky puede ayudarte a reducir el sobrante, todo mientras encontramos
           nuevos clientes para que recuperes costos hundidos.
         </Text>
-        <PopupButton id="kdU1E3B5">
-          <Button modifier="secondary" className="mt-8">
-            Registrar mi negocio
-          </Button>
-        </PopupButton>
+        <Button
+          modifier="secondary"
+          className="mt-8"
+          onClick={(e) => onClickHandler(e, "/business")}
+        >
+          Registrar mi negocio
+        </Button>
       </ProductRight>
       <Footer />
     </div>

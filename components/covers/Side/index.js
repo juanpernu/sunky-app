@@ -3,7 +3,7 @@ import React from "react";
 export const Side = ({ imgSrc, imgAlt, children }) => {
   return (
     <div className="mt-6 max-w-7xl mx-auto h-auto">
-      <div className="overflow-hidden w-full sm:h-full h-full grid grid-cols-2 justify-center items-center">
+      <div className="overflow-hidden w-full sm:h-full h-full grid md:grid-cols-2 grid-cols-1 justify-center items-center">
         <div className="z-50">{children}</div>
         <img
           src={imgSrc}
