@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { useForm } from "./useForm";
 import { useSubmit } from "./useSubmit";
-import { Input, Button, Form, SquareCheckbox } from "../../../index";
+import { Input, Button, Form } from "../../../index";
 
 export const SingupForm = ({ onChange }) => {
   const { initialValues, validate } = useForm();
@@ -20,10 +20,10 @@ export const SingupForm = ({ onChange }) => {
             <span className="font-bold">Regístrate. </span>
             <span className="font-regular">Empieza a ahorrar.</span>
           </p>
-          <Input name="name" label="Nombre" type="text" />
-          <Input name="lastname" label="Apellido" type="text" />
-          <Input name="email" label="Email" type="text" />
-          <Input name="phone" label="Teléfono" type="number" />
+          <Input name="name" label="Nombre *" type="text" />
+          <Input name="lastname" label="Apellido *" type="text" />
+          <Input name="email" label="Email *" type="text" />
+          <Input name="phone" label="Teléfono *" type="text" />
           <Button
             className="mt-8 flex items-center justify-center text-base w-full h-10"
             loading={isSubmitting}

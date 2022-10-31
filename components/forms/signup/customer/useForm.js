@@ -10,24 +10,13 @@ export function useForm() {
   const validate = useCallback((values) => {
     const errors = {};
     const requiredMsg = "Campo requerido";
-    const requiredFields = [
-      "name",
-      "phone",
-      "email",
-      "city",
-      "terms_conditions",
-    ];
+    const requiredFields = ["name", "lastname", "phone", "email"];
 
     requiredFields.forEach((requiredField) => {
       if (!values[requiredField]) {
         errors[requiredField] = requiredMsg;
       }
     });
-
-    if (!values.terms_conditions) {
-      errors.terms_conditions =
-        "Debes aceptar los términos y condiciones para continuar.";
-    }
 
     return errors;
   }, []);
@@ -38,9 +27,8 @@ export function useForm() {
 function getInitialValues() {
   return {
     name: "",
+    lastname: "",
     phone: "",
     email: "",
-    city: "",
-    terms_conditions: false,
   };
 }

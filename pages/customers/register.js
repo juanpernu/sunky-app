@@ -1,16 +1,15 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Card, Logo } from "../../components";
+import { Card, Logo, MenuLanding } from "../../components";
 import { RegisterCustomerForm } from "../../components/forms";
 
 const Register = () => {
   const router = useRouter();
 
-  const onChangeHandler = (id) => {
+  const onChangeHandler = () =>
     router.push({
-      pathname: `/business/${id}`,
+      pathname: `/success`,
     });
-  };
 
   return (
     <section className="flex min-h-screen py-10 flex-col items-center justify-center">

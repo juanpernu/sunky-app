@@ -4,7 +4,7 @@ import {
   LoadingContext,
   SnackbarContext,
 } from "../../../../context";
-import { bussinesSignup } from "../../../../services";
+import { customersSignup } from "../../../../services";
 
 export function useSubmit(onChange) {
   const { closeForm } = useContext(FormContext);
@@ -13,14 +13,11 @@ export function useSubmit(onChange) {
 
   return async (spec, formikActions) => {
     try {
-      if (!spec.terms_conditions) {
-        throw new Error("Por favor, acepta los términos y condiciones");
-      }
       startLoading();
       const {
         data: { data },
       } = await axiosPromise(spec);
-      if (data) onChange(data._id.toString());
+      if (data) onChange();
       closeForm();
     } catch (err) {
       showErrorSnackbar(err.message);
@@ -34,17 +31,17 @@ export function useSubmit(onChange) {
 
 function axiosPromise(spec) {
   const apiSpec = transformSpec(spec);
+  console.log(apiSpec);
 
-  return bussinesSignup(apiSpec);
+  return customersSignup(apiSpec);
 }
 
 function transformSpec(spec) {
   const apiSpec = {
     name: spec.name,
+    lastname: spec.lastname,
     phone: spec.phone,
     email: spec.email,
-    city: spec.city,
-    terms_conditions: spec.terms_conditions,
   };
 
   return apiSpec;
