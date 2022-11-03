@@ -84,15 +84,15 @@ const Business = () => {
       <MenuLanding onClick={onClickHandler} />
       <div className="overflow-hidden max-w-7xl mx-auto w-full sm:h-full md:flex md:flex-col h-full lg:grid py-10 lg:grid-cols-12 lg:gap-10 items-center">
         <div className="col-span-6">
-          <h2 className="lg:text-8xl text-purple-600 font-bold md:text-7xl text-2xl">
-            VENDER TU EXCEDENTE NUNCA HABÍA SIDO TAN FÁCIL
+          <h2 className="lg:text-8xl text-purple-600 font-bold md:text-7xl text-2xl uppercase">
+            Vender tu excedente de comida nunca fue tan fácil
           </h2>
           <Subtitle className="md:mt-10 mt-2">
             Unite al movimiento Sunky.
           </Subtitle>
           <Text className="text-amber-500 flex flex-col md:flex-row md:items-center items-left mb-10 md:mb-0">
             <GlobeIcon className="md:h-10 md:w-10 h-8 w-8 md:mr-4" />
-            Ayuda al planeta, transforma pérdidas en igresos y da a conocer tu
+            Ayuda al planeta, transforma pérdidas en ingresos y hace famosa a tu
             comida.
           </Text>
         </div>
