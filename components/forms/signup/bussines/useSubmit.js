@@ -17,10 +17,9 @@ export function useSubmit(onChange) {
         throw new Error("Por favor, acepta los términos y condiciones");
       }
       startLoading();
-      const {
-        data: { data },
-      } = await axiosPromise(spec);
-      if (data) onChange(data._id.toString());
+      await axiosPromise(spec);
+      // if (data) onChange(data._id.toString());
+      onChange();
       closeForm();
     } catch (err) {
       showErrorSnackbar(err.message);

@@ -1,5 +1,4 @@
 import React from "react";
-import ReCAPTCHA from "react-google-recaptcha";
 import { Formik } from "formik";
 import { useForm } from "./useForm";
 import { useSubmit } from "./useSubmit";
@@ -30,12 +29,6 @@ export const SingupForm = ({ onChange }) => {
             label="Aceptar términos y condiciones"
             description="Al registrarte aceptas todos los términos y condiciones."
           />
-          <div className="mt-4 flex justify-center">
-            <ReCAPTCHA
-              sitekey="6LeOIdIhAAAAADN2HKs394907QBUlLL03GgF7UxF"
-              onChange={onChange}
-            />
-          </div>
           <Button
             className="mt-8 flex items-center justify-center text-base w-full h-10"
             loading={isSubmitting}
